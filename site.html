@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valhesia — Um Mundo Além do Tempo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background:#000;
+    color:#eaeaea;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    background:url("bg.jpg") center/cover no-repeat;
+    z-index:-2;
+    animation:slowZoom 40s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.97)
+    );
+    z-index:-1;
+}
+
+/* REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    filter:blur(6px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+    filter:none;
+}
+
+/* HEADER */
+header{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+}
+
+header h1{
+    font-size:clamp(3rem,7vw,6rem);
+    font-weight:900;
+    letter-spacing:6px;
+    animation:fadeDown 1.4s ease forwards;
+}
+
+header p{
+    margin-top:20px;
+    font-size:1.2rem;
+    opacity:0;
+    animation:fadeUp 1.4s ease forwards;
+    animation-delay:0.4s;
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-40px);}
+    to{opacity:1; transform:none;}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:0.85; transform:none;}
+}
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    font-size:0.9rem;
+    opacity:0.6;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:0.4;}
+    50%{opacity:0.9;}
+}
+
+/* SECTIONS */
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:120px 30px;
+}
+
+section h2{
+    font-size:2.6rem;
+    margin-bottom:30px;
+    font-weight:800;
+}
+
+section p{
+    font-size:1.1rem;
+    line-height:1.9;
+    opacity:0.85;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:30px;
+    transition:0.4s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform:translateX(-100%);
+    transition:0.6s;
+}
+
+.card:hover::before{
+    transform:translateX(100%);
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    background:rgba(255,255,255,0.07);
+}
+
+.card h3{
+    font-size:1.4rem;
+    margin-bottom:15px;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:160px 30px;
+}
+
+.cta h2{
+    font-size:3rem;
+    margin-bottom:40px;
+}
+
+.cta a{
+    display:inline-block;
+    padding:20px 60px;
+    border-radius:60px;
+    background:#fff;
+    color:#000;
+    text-decoration:none;
+    font-weight:900;
+    letter-spacing:3px;
+    transition:0.4s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.cta a::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#000;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:0.4s ease;
+    z-index:-1;
+}
+
+.cta a:hover{
+    color:#fff;
+}
+
+.cta a:hover::after{
+    transform:scaleX(1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    font-size:0.85rem;
+    opacity:0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<header>
+    <div>
+        <h1>VALHESIA</h1>
+        <p>Um universo persistente onde decisões moldam destinos.</p>
+    </div>
+    <div class="scroll">Role para descobrir</div>
+</header>
+
+<section class="reveal">
+    <h2>Sobre o Projeto</h2>
+    <p>
+        Valhesia é um mundo vivo.  
+        Nada aqui é estático. Nada é esquecido.  
+        Cada escolha cria ecos que atravessam o tempo.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>O Que Torna Valhesia Único</h2>
+    <div class="grid">
+        <div class="card reveal">
+            <h3>Lore Viva</h3>
+            <p>Histórias continuam mesmo sem você estar online.</p>
+        </div>
+        <div class="card reveal">
+            <h3>Consequências</h3>
+            <p>Decisões moldam cidades, alianças e conflitos.</p>
+        </div>
+        <div class="card reveal">
+            <h3>RP Sério</h3>
+            <p>Interpretação acima de mecânica.</p>
+        </div>
+        <div class="card reveal">
+            <h3>Eventos Cinemáticos</h3>
+            <p>Momentos planejados como cenas de filme.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Para Quem É</h2>
+    <p>
+        Para quem busca imersão real, narrativa profunda
+        e um mundo que reage às suas ações.
+    </p>
+</section>
+
+<section class="cta reveal">
+    <h2>Você Está Pronto?</h2>
+    <a href="https://discord.gg/KFzp2KRAje">ENTRAR NO UNIVERSO</a>
+</section>
+
+<footer>
+    © Valhesia Project
+</footer>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("active");
+        }
+    });
+},{threshold:0.15});
+
+reveals.forEach(r=>observer.observe(r));
+</script>
+
+</body>
+</html>
